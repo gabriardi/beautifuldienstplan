@@ -1,0 +1,23 @@
+@import "../../scss/theme.scss";
+
+.uploader {
+  label {
+    font-size: 20rem;
+    color: rgba(#000, 0.8);
+    cursor: pointer;
+    transition: $defaultTransition;
+    height: 20rem;
+
+    &:hover {
+      color: rgba(#000, 0.6);
+    }
+
+    @media only screen and (min-width: 400px) {
+      font-size: 25rem;
+      height: 25rem;
+    }
+  }
+  input {
+    display: none;
+  }
+}

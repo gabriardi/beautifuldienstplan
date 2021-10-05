@@ -1,0 +1,24 @@
+@import "../../scss/theme.scss";
+
+.buttonDownload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  border: 1px solid #000;
+  padding: 1rem 2rem;
+  width: 13rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: $defaultTransition;
+  color: #000;
+
+  &:hover {
+    background-color: #eee;
+  }
+
+  svg {
+    font-size: 3rem;
+    margin-right: 1rem;
+  }
+}

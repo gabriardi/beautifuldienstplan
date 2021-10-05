@@ -1,0 +1,34 @@
+@import "../../scss/theme.scss";
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heart {
+  color: red;
+  font-size: 1.6rem;
+}
+
+.github {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  a {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    transition: $defaultTransition;
+
+    &:hover {
+      color: rgba(#000000, 0.6);
+    }
+  }
+
+  span {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+}

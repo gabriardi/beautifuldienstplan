@@ -1,0 +1,25 @@
+@import "../../scss/theme.scss";
+
+.header {
+  margin: 2rem 0;
+
+  h1 {
+    font-size: 3rem;
+
+    @media only screen and (min-width: 400px) {
+      font-size: 3.5rem;
+    }
+    @media only screen and (min-width: 700px) {
+      font-size: 4rem;
+    }
+  }
+}
+.link {
+  text-decoration: none;
+  color: #000;
+  transition: $defaultTransition;
+
+  &:hover {
+    color: rgba(#000, 0.6);
+  }
+}
