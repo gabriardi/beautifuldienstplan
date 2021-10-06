@@ -6,9 +6,12 @@ import { GrDocumentExcel, GrDocumentPdf } from "react-icons/gr"
 import xlsxFormat from "../api/xlsxFormat"
 import isApiServerAwake from "../api/isApiServerAwake"
 import getFileNameNoExtension from "../utils/getFileNameNoExtension"
+import isValidXlsx from "../utils/isValidXlsx"
+
 import Layout from "../components/Layout"
 import Uploader from "../components/Uploader"
 import Spinner from "../components/Spinner"
+import WrongFile from "../components/WrongFile"
 import ButtonDownload from "../components/ButtonDownload"
 import { Helmet } from "react-helmet"
 
@@ -17,6 +20,7 @@ const IndexPage = () => {
   const [pdfBase64, setPdfBase64] = useState(null)
   const [xlsxBase64, setXlsxBase64] = useState(null)
   const [fileName, setFileName] = useState(null)
+  const [showXlsxValidityAlert, setShowXlsxValidityAlert] = useState(false)
 
   useEffect(() => {
     isApiServerAwake().then(
@@ -51,6 +55,12 @@ const IndexPage = () => {
     fileUpload(target.files[0], (err, result) => {
       if (result) {
         setIsLoading(true)
+        if (!isValidXlsx(result)) {
+          setIsLoading(false)
+          setShowXlsxValidityAlert(true)
+          return
+        }
+        setShowXlsxValidityAlert(false)
         xlsxFormat(result).then(
           res => {
             setIsLoading(false)
@@ -73,6 +83,7 @@ const IndexPage = () => {
         ) : (
           <Uploader onUploadFileChange={onUploadFileChange} />
         )}
+        {showXlsxValidityAlert && <WrongFile />}
         <div
           style={{
             display: "grid",
