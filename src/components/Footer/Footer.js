@@ -17,6 +17,7 @@ const Footer = () => {
         <a
           href="https://github.com/gabriardi/beautifuldienstplan"
           rel="noopener noreferrer"
+          target="_blank"
         >
           <span>
             <AiFillGithub />
@@ -26,6 +27,7 @@ const Footer = () => {
         <a
           href="https://github.com/gabriardi/dpformatter-api"
           rel="noopener noreferrer"
+          target="_blank"
         >
           <span>
             <AiFillGithub />
