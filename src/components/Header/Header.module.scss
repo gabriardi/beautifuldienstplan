@@ -1,8 +1,6 @@
 @import "../../scss/theme.scss";
 
 .header {
-  margin: 2rem 0;
-
   h1 {
     font-size: 3rem;
 
@@ -21,5 +19,13 @@
 
   &:hover {
     color: rgba(#000, 0.6);
+    svg {
+      fill: rgba(#000, 0.6);
+    }
   }
+}
+
+.layout {
+  display: flex;
+  align-items: center;
 }

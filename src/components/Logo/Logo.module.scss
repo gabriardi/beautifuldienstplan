@@ -1,0 +1,11 @@
+@import "../../scss/theme.scss";
+
+.myLogo {
+  height: 12rem;
+  margin: 2rem;
+
+  svg {
+    transition: $defaultTransition;
+    fill: rgba(#000, 1);
+  }
+}
