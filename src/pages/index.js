@@ -10,6 +10,7 @@ import Layout from "../components/Layout"
 import Uploader from "../components/Uploader"
 import Spinner from "../components/Spinner"
 import ButtonDownload from "../components/ButtonDownload"
+import { Helmet } from "react-helmet"
 
 const IndexPage = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -64,25 +65,32 @@ const IndexPage = () => {
   }
 
   return (
-    <Layout>
-      {isLoading === true ? (
-        <Spinner />
-      ) : (
-        <Uploader onUploadFileChange={onUploadFileChange} />
-      )}
-      <div
-        style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}
-      >
-        <ButtonDownload downloadName={`${fileName}.xlsx`} href={xlsxBase64}>
-          <GrDocumentExcel />
-          Get Excel
-        </ButtonDownload>
-        <ButtonDownload downloadName={`${fileName}.pdf`} href={pdfBase64}>
-          <GrDocumentPdf />
-          Get PDF
-        </ButtonDownload>
-      </div>
-    </Layout>
+    <>
+      <Helmet title="Beautiful Dienstplan" defer={false} />
+      <Layout>
+        {isLoading === true ? (
+          <Spinner />
+        ) : (
+          <Uploader onUploadFileChange={onUploadFileChange} />
+        )}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "1rem",
+          }}
+        >
+          <ButtonDownload downloadName={`${fileName}.xlsx`} href={xlsxBase64}>
+            <GrDocumentExcel />
+            Get Excel
+          </ButtonDownload>
+          <ButtonDownload downloadName={`${fileName}.pdf`} href={pdfBase64}>
+            <GrDocumentPdf />
+            Get PDF
+          </ButtonDownload>
+        </div>
+      </Layout>
+    </>
   )
 }
 
