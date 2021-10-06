@@ -68,7 +68,14 @@ const IndexPage = () => {
             setXlsxBase64(res.xlsxBase64)
             setFileName(getFileNameNoExtension(target.files[0].name))
           },
-          err => console.log(err)
+          err => {
+            const errorData = err.response.data
+            console.log(errorData)
+            if (errorData.error === "invalid document") {
+              setIsLoading(false)
+              setShowXlsxValidityAlert(true)
+            }
+          }
         )
       }
     })
