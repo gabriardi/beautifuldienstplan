@@ -4,6 +4,7 @@ import { navigate } from "gatsby-link"
 import { GrDocumentExcel, GrDocumentPdf } from "react-icons/gr"
 
 import xlsxFormat from "../api/xlsxFormat"
+import xlsxToPdf from "../api/xlsxToPdf"
 import isApiServerAwake from "../api/isApiServerAwake"
 import getFileNameNoExtension from "../utils/getFileNameNoExtension"
 import isValidXlsx from "../utils/isValidXlsx"
@@ -61,12 +62,17 @@ const IndexPage = () => {
           return
         }
         setShowXlsxValidityAlert(false)
+        setFileName(getFileNameNoExtension(target.files[0].name))
         xlsxFormat(result).then(
-          res => {
-            setIsLoading(false)
-            setPdfBase64(res.pdfBase64)
-            setXlsxBase64(res.xlsxBase64)
-            setFileName(getFileNameNoExtension(target.files[0].name))
+          resXlsx => {
+            xlsxToPdf(resXlsx.xlsxBase64).then(
+              resPdf => {
+                setIsLoading(false)
+                setXlsxBase64(resXlsx.xlsxBase64)
+                setPdfBase64(resPdf)
+              },
+              err => console.log(err)
+            )
           },
           err => {
             const errorData = err.response.data
