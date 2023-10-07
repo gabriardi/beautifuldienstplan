@@ -15,7 +15,7 @@ const xlsxToPdf = async formattedXlsx => {
   const apiPath = "/convert/xls/to/pdf"
   const headers = {
     "Content-Type": "multipart/form-data",
-    Apikey: process.env.CLOUDMERSIVE_API_KEY,
+    Apikey: process.env.GATSBY_CLOUDMERSIVE_API_KEY,
   }
 
   const response = await axios.post(apiUrl + apiPath, data, {
