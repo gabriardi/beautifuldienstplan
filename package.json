@@ -6,6 +6,7 @@
   "author": "Gabriele Ardizzone <gabri.ardi@gmail.com>",
   "dependencies": {
     "@fontsource/open-sans": "^5.0.17",
+    "@netlify/plugin-gatsby": "^3.8.4",
     "axios": "^1.5.1",
     "axios-retry": "^3.2.0",
     "gatsby": "^5.12.8",
