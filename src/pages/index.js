@@ -31,7 +31,7 @@ const IndexPage = () => {
       err => {
         console.log(err)
         navigate("/error")
-      }
+      },
     )
   }, [])
 
@@ -71,7 +71,11 @@ const IndexPage = () => {
                 setXlsxBase64(resXlsx.xlsxBase64)
                 setPdfBase64(resPdf)
               },
-              err => console.log(err)
+              err => {
+                console.log(err)
+                setIsLoading(false)
+                setXlsxBase64(resXlsx.xlsxBase64)
+              },
             )
           },
           err => {
@@ -81,7 +85,7 @@ const IndexPage = () => {
               setIsLoading(false)
               setShowXlsxValidityAlert(true)
             }
-          }
+          },
         )
       }
     })
